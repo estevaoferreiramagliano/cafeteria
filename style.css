@@ -21,6 +21,13 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+    .logo img{
+        width: px;
+        height: 90px;
+        border-radius: 70%;
+        margin-left: auto;
+        display: flex;
+    }
 
 #cabecalho nav a{
     color: white;
