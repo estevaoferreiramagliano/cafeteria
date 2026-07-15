@@ -4,158 +4,226 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
- 
+
+html {
+    height: 100%;
+    background: #FAF7F2;
+}
+
 body {
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
- 
+
     background: #FAF7F2;
     color: #333;
 }
- 
-/* Cabeçalho */
+
+/* ===== Cabeçalho ===== */
 #cabecalho {
     background: #3E2723;
     color: white;
-    padding: 20px 40px;
- 
+    padding: 18px 40px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
 }
- 
+
+#cabecalho h1 {
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+#cabecalho nav {
+    display: flex;
+    gap: 25px;
+}
+
 #cabecalho nav a {
+    position: relative;
     color: white;
     text-decoration: none;
-    margin-left: 20px;
-    transition: 0.3s;
+    padding-bottom: 4px;
+    transition: color 0.3s;
 }
- 
+
+/* Efeito: linha crescendo embaixo do link ao passar o mouse */
+#cabecalho nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #A97142;
+    transition: width 0.3s;
+}
+
 #cabecalho nav a:hover {
     color: #A97142;
 }
- 
-/* Banner */
+
+#cabecalho nav a:hover::after {
+    width: 100%;
+}
+
+#cabecalho button {
+    background: #A97142;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#cabecalho button:hover {
+    background: #7B552F;
+    transform: translateY(-2px);
+}
+
+/* ===== Banner ===== */
 #banner {
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px;
 }
- 
+
 #banner h2 {
     color: #3E2723;
-    font-size: 35px;
+    font-size: 36px;
     margin-bottom: 10px;
 }
- 
+
 #banner p {
     color: #666;
+    font-size: 18px;
 }
- 
-/* Cardápio */
+
+/* ===== Cardápio ===== */
 #cardapio {
     width: 95%;
-    max-width: 900px;
-    margin: auto;
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
 }
- 
+
 #cardapio h2 {
     text-align: center;
     margin-bottom: 30px;
     color: #3E2723;
+    font-size: 28px;
 }
- 
-/* Produto (linha com imagem + informações) */
+
+/* Grade responsiva: os cards se ajustam sozinhos ao tamanho da tela */
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+}
+
+/* ===== Card do produto ===== */
 .produto {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
     background: white;
-    width: 100%;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, .15);
-    transition: 0.3s;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
- 
+
+/* Efeito ao passar o mouse: card "levanta" e a sombra fica mais forte */
 .produto:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .2);
 }
- 
-/* Imagem do produto */
+
+/* Imagem padronizada (mesmo tamanho em todos os cards) */
 .produto img {
-    width: 180px;
-    height: 140px;
+    width: 100%;
+    height: 170px;
     object-fit: cover;
-    border-radius: 10px;
-    flex-shrink: 0;
+    display: block;
+    transition: transform 0.4s;
 }
- 
-/* Bloco de texto do produto (fica ao lado da imagem) */
-.info-produto {
-    flex: 1;
+
+/* Efeito: leve zoom na imagem ao passar o mouse no card */
+.produto:hover img {
+    transform: scale(1.08);
+}
+
+/* Conteúdo de texto do card */
+.conteudo {
+    padding: 18px;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
- 
-/* Nome e preço */
+
 .topo-produto {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
- 
+
 .topo-produto h3 {
-    font-size: 19px;
+    font-size: 18px;
     color: #3E2723;
 }
- 
+
 .preco {
     color: #A97142;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     white-space: nowrap;
 }
- 
-/* Descrição */
-.info-produto p {
-    font-size: 16px;
-    margin-bottom: 15px;
+
+.conteudo p {
+    font-size: 15px;
     line-height: 1.5;
     color: #555;
+    margin-bottom: 16px;
+    flex: 1;
 }
- 
-/* Botão */
-button {
+
+/* Botão estilizado, sempre "grudado" na base do card */
+.conteudo button {
     background: #A97142;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
-    transition: .3s;
-    align-self: flex-end;
+    font-weight: bold;
+    align-self: flex-start;
+    transition: background 0.3s, transform 0.2s;
 }
- 
-button:hover {
+
+.conteudo button:hover {
     background: #7B552F;
+    transform: scale(1.05);
 }
- 
+
 /* Produto oculto */
 .oculto {
     display: none;
 }
- 
-/* Rodapé */
+
+/* ===== Rodapé ===== */
 #rodape {
     background: #3E2723;
     color: white;
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
+    margin-top: auto;
 }
