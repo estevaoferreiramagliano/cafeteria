@@ -1,120 +1,137 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-body{
+ 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+ 
     background: #FAF7F2;
     color: #333;
 }
-
+ 
 /* Cabeçalho */
-#cabecalho{
+#cabecalho {
     background: #3E2723;
     color: white;
     padding: 20px 40px;
-
+ 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-    .logo img{
-        width: px;
-        height: 90px;
-        border-radius: 70%;
-        margin-left: auto;
-        display: flex;
-    }
-#cabecalho nav a{
+ 
+#cabecalho nav a {
     color: white;
     text-decoration: none;
     margin-left: 20px;
     transition: 0.3s;
 }
-#cabecalho nav a:hover{
+ 
+#cabecalho nav a:hover {
     color: #A97142;
 }
+ 
 /* Banner */
-#banner{
+#banner {
     text-align: center;
-    padding: 40px;
+    padding: 40px 20px;
 }
-#banner h2{
+ 
+#banner h2 {
     color: #3E2723;
     font-size: 35px;
     margin-bottom: 10px;
 }
-#banner p{
+ 
+#banner p {
     color: #666;
 }
-
+ 
 /* Cardápio */
-#cardapio{
+#cardapio {
     width: 95%;
+    max-width: 900px;
     margin: auto;
 }
-#cardapio h2{
+ 
+#cardapio h2 {
     text-align: center;
     margin-bottom: 30px;
     color: #3E2723;
 }
-
-/* Produtos */
-.produto{
+ 
+/* Produto (linha com imagem + informações) */
+.produto {
     display: flex;
     align-items: center;
     gap: 20px;
     background: white;
-    width: 60%;
+    width: 100%;
     margin: 20px auto;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 5px 12px rgba(0,0,0,.15);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .15);
     transition: 0.3s;
 }
-.produto:hover{
+ 
+.produto:hover {
     transform: translateY(-5px);
 }
-
-/* Imagem */
-.produto img{
+ 
+/* Imagem do produto */
+.produto img {
     width: 180px;
     height: 140px;
     object-fit: cover;
     border-radius: 10px;
+    flex-shrink: 0;
 }
-
+ 
+/* Bloco de texto do produto (fica ao lado da imagem) */
+.info-produto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+ 
 /* Nome e preço */
-.topo-produto{
+.topo-produto {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 35px;
+    gap: 15px;
     margin-bottom: 10px;
 }
-.topo-produto h3{
+ 
+.topo-produto h3 {
     font-size: 19px;
     color: #3E2723;
-    flex: 1;
 }
-.preco{
+ 
+.preco {
     color: #A97142;
     font-size: 19px;
     font-weight: bold;
-    min-width: 90px;
-    text-align: right;
+    white-space: nowrap;
 }
-
+ 
 /* Descrição */
-.produto p{
+.info-produto p {
     font-size: 16px;
     margin-bottom: 15px;
     line-height: 1.5;
+    color: #555;
 }
-
+ 
 /* Botão */
-button{
+button {
     background: #A97142;
     color: white;
     border: none;
@@ -122,20 +139,20 @@ button{
     border-radius: 8px;
     cursor: pointer;
     transition: .3s;
-    display: block;
-    margin-left: auto;
+    align-self: flex-end;
 }
-button:hover{
+ 
+button:hover {
     background: #7B552F;
 }
-
+ 
 /* Produto oculto */
-.oculto{
+.oculto {
     display: none;
 }
-
+ 
 /* Rodapé */
-#rodape{
+#rodape {
     background: #3E2723;
     color: white;
     text-align: center;
